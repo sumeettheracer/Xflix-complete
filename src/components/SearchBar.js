@@ -1,29 +1,41 @@
-import React from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import { Box } from "@mui/material";
+import React from 'react'
+import TextField from '@mui/material/TextField'
+import { styled } from '@mui/material/styles';
+import { InputAdornment } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = ({ handleSearch }) => {
-  // const [search, setSearch] = useState("")
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'grey',
+      },
+      '&:hover fieldset': {
+        borderColor: 'white',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white',
+      },
+    },
+  });
+
+
+const Searchbar = ({ handleSearch }) => {
   return (
-    <Box>
-      <Box
-        className="search-bar-mobile">
-        <input
-          type="text"
-          id="search"
-          autoComplete="off"
-          name="search"
-          // value={search}
-          onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search"
-          className="search-input"
-        />
-        <button type="submit" className="search-button">
-          <SearchIcon />
-        </button>
-      </Box>
-    </Box>
-  );
-};
+    <><CssTextField  onChange={(e) => handleSearch(e.target.value)} sx={{width:"20rem"}} label="Search" id="custom-css-outlined-input" 
+    InputProps={{
+        endAdornment:(
+            <InputAdornment position="end">
+                <SearchIcon color="white"/>
+            </InputAdornment>
+        )
+    }}/></>
+  )
+}
 
-export default SearchBar;
+export default Searchbar

@@ -62,13 +62,9 @@ body {
   display: none;
 }
 
-.search-bar-desktop {
-  display: flex;
-  align-items: center;
-}
+
 
 .genre-pannel {
-  background: #202020;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

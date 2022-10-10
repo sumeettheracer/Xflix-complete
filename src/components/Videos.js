@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import { Box, Grid, Stack, Button } from "@mui/material";
+import { Box, Grid, Stack, Button,useMediaQuery } from "@mui/material";
 import axios from "axios";
 import { config } from "../App";
 import { useSnackbar } from "notistack";
 import Loading from "../utils/Loading";
 import VideoGrid from "./VideoGrid";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar"
 
 const Videos = ({ videoDetails }) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -281,15 +281,15 @@ const Videos = ({ videoDetails }) => {
   const handleSearch = (title) => {
     debounceSearch(title, 500);
   };
-
+  const matches = useMediaQuery('(min-width:750px)');
   return (
     <>
       {!videoDetails && (
         <>
           <Header handleSearch={handleSearch} />
 
-          <Box sx={{ background: "#202020"}}>
-            <SearchBar handleSearch={handleSearch} />
+          <Box key={"outerdiv"} sx={{ marginTop: '9vh', paddingTop: '5vh', width: 'full', height: 'auto', display: "flex", flexDirection: "column", alignItems: 'center', justifyContent: "center" }}>
+            {!matches && <SearchBar handleSearch={handleSearch} />}
             <Box className="genre-pannel">
               {/* Genre Pannel setting for selection */}
               <Box className="genre">
